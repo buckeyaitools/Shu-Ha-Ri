@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Image Map</title>
+    <style>
+        /* Basic styling to make the image responsive and the description box look decent */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            position: relative;
+            width: 800px; /* Wider container */
+            height: 500px; /* Adjust as needed */
+            margin: 25px;
+            display: flex; /* Use flexbox */
+        }
+
+        .container img {
+            width: 500px; /* Keep the image at its original width */
+            height: 100%; /* Occupy full height */
+            object-fit: contain;
+        }
+
+        .container a {
+            position: absolute;
+            background: rgba(0, 0, 0, 0); /* Invisible background */
+            border: none;
+            cursor: pointer;
+        }
+
+        #descriptionBox {
+            width: 300px; /* Width for the text box */
+            height: 100%; /* Occupy full height */
+            padding: 10px;
+            box-sizing: border-box; /* Include padding in the width calculation */
+            font-size: 14px;
+            text-align: left; /* Left align the text */
+            overflow: auto; /* Add scrollbar if content exceeds height */
+            background-color: rgba(255, 255, 255, 0.8);
+            position: static; /* Remove absolute positioning */
+            margin-left: 20px; /* Add space to the left of the description box */
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+       <img src="https://i.imgur.com/CJfLtbE.png">
+
+        <!-- Shu (守) Region -->
+        <a href="#" onclick="showDescription('Shu (守) — Learn & Follow the Forms “Adopt AI carefully, build literacy, start small.”<br><br>At this stage, the organization is learning the basics of AI responsibly and safely. The goal is to build awareness, literacy, and trust. <br>Focus: Train teams on AI fundamentals (LLMs, generative AI, prompt design, risks). <br>Establish guidelines for safe data handling (PII, IP protection). Begin with simple, well-defined use cases (e.g., code documentation, boilerplate generation, test creation). <br>Engineering Capacity Impact: Early productivity gains on repetitive, low-risk tasks. Engineers learn how to collaborate with AI tools, but human oversight is essential.'); return false;" style="top: 38%; left: 5%; width: 28%; height: 25%;"></a>
+
+        <!-- Ha (破) Region -->
+        <a href="#" onclick="showDescription('Ha (破) — Challenge & Break the Forms\n“Shape AI for our org, integrate into workflows.”\nThe organization now starts experimenting with AI tools, testing boundaries, and generating new insights. The focus is on empowering teams with AI and exploring the best approaches for their unique needs.\nFocus:\nImplement AI tools across various teams (e.g., code generation, research, design, sales).\nEncourage teams to challenge AI limitations, evaluate biases, and identify potential risks.\nDevelop metrics to track AI adoption, impact, and ROI.\nEngineering Capacity Impact:\nEngineers experiment with AI-assisted development workflows, significantly boosting efficiency on complex tasks.\nIncreased experimentation leads to new breakthroughs in software development and engineering processes.'); return false;" style="top: 22%; left: 30%; width: 23%; height: 33%;"></a>
+
+        <!-- Ri (離) Region -->
+        <a href="#" onclick="showDescription('Ri (離) — Separate & Transcend the Forms\n“Make AI-native engineering culture, amplifying creativity and capacity.”\nThe organization develops a deep understanding of AI, unlocking its full potential and applying it strategically to achieve its vision. The focus is on creating a long-term competitive advantage.\nFocus:\nApply AI to drive strategic initiatives (e.g., product innovation, customer experience, operational efficiency).\nBuild proprietary AI capabilities (e.g., custom models, data sets, algorithms).\nFoster a culture of continuous learning and innovation to stay ahead of the curve.\nEngineering Capacity Impact:\nEngineers become AI pioneers, innovating in both software and hardware.\nOrganization establishes a significant competitive edge by building unique and powerful AI capabilities.'); return false;" style="top: 20%; left: 43%; width: 27%; height: 30%;"></a>
+
+        <div id="descriptionBox"></div>
+    </div>
+
+    <script>
+        function showDescription(message) {
+            const descriptionBox = document.getElementById('descriptionBox');
+            const formattedMessage = message.replace(/\n/g, '<br>'); // Replace newlines with <br>
+            descriptionBox.innerHTML = formattedMessage; // Use innerHTML
+            descriptionBox.style.display = 'block';
+            descriptionBox.scrollTop = 0; // Reset scroll to top
+        }
+    </script>
+
+</body>
+</html>

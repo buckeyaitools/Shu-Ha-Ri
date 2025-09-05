@@ -36,6 +36,11 @@
             background: rgba(0, 0, 0, 0); /* Invisible background */
             border: none;
             cursor: pointer;
+            transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+        }
+
+        .container a.highlight {
+           box-shadow: 0 0 10px 5px rgba(0, 255, 255, 0.7); /* Cyan glow */
         }
 
         #descriptionBox {
@@ -59,24 +64,36 @@
        <img src="https://i.imgur.com/5tGs4Hg.png">
 
         <!-- Shu (守) Region -->
-        <a href="#" onclick="showDescription('Shu (守) — Learn & Follow the Forms “Adopt AI carefully, build literacy, start small.”<br><br>At this stage, the organization is learning the basics of AI responsibly and safely. The goal is to build awareness, literacy, and trust. <br>Focus: Train teams on AI fundamentals (LLMs, generative AI, prompt design, risks). <br>Establish guidelines for safe data handling (PII, IP protection). Begin with simple, well-defined use cases (e.g., code documentation, boilerplate generation, test creation). <br>Engineering Capacity Impact: Early productivity gains on repetitive, low-risk tasks. Engineers learn how to collaborate with AI tools, but human oversight is essential.'); return false;" style="top: 38%; left: 5%; width: 28%; height: 25%;"></a>
+        <a href="#" onclick="showDescription('Shu (守) — Learn & Follow the Forms “Adopt AI carefully, build literacy, start small.”<br><br>At this stage, the organization is learning the basics of AI responsibly and safely. The goal is to build awareness, literacy, and trust. <br>Focus: Train teams on AI fundamentals (LLMs, generative AI, prompt design, risks). <br>Establish guidelines for safe data handling (PII, IP protection). Begin with simple, well-defined use cases (e.g., code documentation, boilerplate generation, test creation). <br>Engineering Capacity Impact: Early productivity gains on repetitive, low-risk tasks. Engineers learn how to collaborate with AI tools, but human oversight is essential.', this); return false;" style="top: 38%; left: 5%; width: 28%; height: 25%;"></a>
 
         <!-- Ha (破) Region -->
-        <a href="#" onclick="showDescription('Ha (破) — Challenge & Break the Forms\n“Shape AI for our org, integrate into workflows.”\nThe organization now starts experimenting with AI tools, testing boundaries, and generating new insights. The focus is on empowering teams with AI and exploring the best approaches for their unique needs.\nFocus:\nImplement AI tools across various teams (e.g., code generation, research, design, sales).\nEncourage teams to challenge AI limitations, evaluate biases, and identify potential risks.\nDevelop metrics to track AI adoption, impact, and ROI.\nEngineering Capacity Impact:\nEngineers experiment with AI-assisted development workflows, significantly boosting efficiency on complex tasks.\nIncreased experimentation leads to new breakthroughs in software development and engineering processes.'); return false;" style="top: 22%; left: 30%; width: 23%; height: 33%;"></a>
+        <a href="#" onclick="showDescription('Ha (破) — Challenge & Break the Forms\n“Shape AI for our org, integrate into workflows.”\nThe organization now starts experimenting with AI tools, testing boundaries, and generating new insights. The focus is on empowering teams with AI tools, testing boundaries, and generating new insights. The focus is on empowering teams with AI and exploring the best approaches for their unique needs.\nFocus:\nImplement AI tools across various teams (e.g., code generation, research, design, sales).\nEncourage teams to challenge AI limitations, evaluate biases, and identify potential risks.\nDevelop metrics to track AI adoption, impact, and ROI.\nEngineering Capacity Impact:\nEngineers experiment with AI-assisted development workflows, significantly boosting efficiency on complex tasks.\nIncreased experimentation leads to new breakthroughs in software development and engineering processes.', this); return false;" style="top: 22%; left: 30%; width: 23%; height: 33%;"></a>
 
         <!-- Ri (離) Region -->
-        <a href="#" onclick="showDescription('Ri (離) — Separate & Transcend the Forms\n“Make AI-native engineering culture, amplifying creativity and capacity.”\nThe organization develops a deep understanding of AI, unlocking its full potential and applying it strategically to achieve its vision. The focus is on creating a long-term competitive advantage.\nFocus:\nApply AI to drive strategic initiatives (e.g., product innovation, customer experience, operational efficiency).\nBuild proprietary AI capabilities (e.g., custom models, data sets, algorithms).\nFoster a culture of continuous learning and innovation to stay ahead of the curve.\nEngineering Capacity Impact:\nEngineers become AI pioneers, innovating in both software and hardware.\nOrganization establishes a significant competitive edge by building unique and powerful AI capabilities.'); return false;" style="top: 20%; left: 43%; width: 27%; height: 30%;"></a>
+        <a href="#" onclick="showDescription('Ri (離) — Separate & Transcend the Forms\n“Make AI-native engineering culture, amplifying creativity and capacity.”\nThe organization develops a deep understanding of AI, unlocking its full potential and applying it strategically to achieve its vision. The focus is on creating a long-term competitive advantage.\nFocus:\nApply AI to drive strategic initiatives (e.g., product innovation, customer experience, operational efficiency).\nBuild proprietary AI capabilities (e.g., custom models, data sets, algorithms).\nFoster a culture of continuous learning and innovation to stay ahead of the curve.\nEngineering Capacity Impact:\nEngineers become AI pioneers, innovating in both software and hardware.\nOrganization establishes a significant competitive edge by building unique and powerful AI capabilities.', this); return false;" style="top: 20%; left: 43%; width: 27%; height: 30%;"></a>
 
         <div id="descriptionBox"></div>
     </div>
 
     <script>
-        function showDescription(message) {
+        let lastClicked = null;
+        function showDescription(message, element) {
             const descriptionBox = document.getElementById('descriptionBox');
-            const formattedMessage = message.replace(/\n/g, '<br>'); // Replace newlines with <br>
-            descriptionBox.innerHTML = formattedMessage; // Use innerHTML
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            descriptionBox.innerHTML = formattedMessage;
             descriptionBox.style.display = 'block';
-            descriptionBox.scrollTop = 0; // Reset scroll to top
+            descriptionBox.scrollTop = 0;
+
+             // Remove highlight from the previously clicked region
+             if (lastClicked) {
+                 lastClicked.classList.remove('highlight');
+             }
+
+            // Add highlight to the clicked region
+            element.classList.add('highlight');
+
+            //Store the element to remove later
+            lastClicked = element;
         }
     </script>
 
